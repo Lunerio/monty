@@ -29,3 +29,16 @@ void s_pop(stack_t **stack, unsigned int line_number)
 	prev->next = NULL;
 	free(current);
 }
+
+/**
+ * nope - really?
+ * @stack: stack list
+ * @line_number: number of line being read
+ */
+
+void nope(stack_t **stack, unsigned int line_number)
+{
+	(void)stack;
+	(void)line_number;
+	return;
+}
