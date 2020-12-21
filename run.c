@@ -20,11 +20,10 @@ int run(char *line, stack_t **stack, unsigned int line_number)
 	instruction_t op_code[] = {
 		{"push", add_int},
 		{"pall", p_stack},
+		{"pint", p_int},
 		{NULL, NULL}
 	};
-
 	line_tok = strtok(line, delim);
-
 	while (op_code[i].opcode != NULL)
 	{
 		if (strcmp(op_code[i].opcode, line_tok) == 0)

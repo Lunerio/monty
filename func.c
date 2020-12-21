@@ -99,3 +99,24 @@ void print_error(unsigned int line_number, char *op_c)
 {
 	fprintf(stderr, "L%u: unknown instruction %s\n", line_number, op_c);
 }
+
+
+/**
+ * p_int - print the top element of the stack(last added)
+ * @stack: pointer to stack
+ * @line_number: number of line being read
+*/
+
+void p_int(stack_t **stack, unsigned int line_number)
+{
+	if (*stack == NULL)
+	{
+		fprintf(stderr, "L%d: can't pint, stack empty\n", line_number);
+		return;
+	}
+	while ((*stack)->next != NULL)
+	{
+		*stack = (*stack)->next;
+	}
+	printf("%d\n", (*stack)->n);
+}

@@ -46,5 +46,6 @@ void p_stack(stack_t **stack, unsigned int line_number);
 void free_stack(stack_t *stack);
 void print_error(unsigned int line_number, char *line_tok);
 void p_error(unsigned int line_number);
+void p_int(stack_t **stack, unsigned int line_number);
 
 #endif
