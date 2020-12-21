@@ -51,5 +51,6 @@ void s_pop(stack_t **stack, unsigned int line_number);
 int checker(stack_t **stack, char *line_tok);
 void nope(stack_t **stack, unsigned int line_number);
 int loop(instruction_t *op_c, char *l_t, stack_t **s, unsigned int line_number);
+void add_func(stack_t **stack, unsigned int line_number);
 
 #endif
