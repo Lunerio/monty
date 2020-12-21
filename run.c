@@ -39,6 +39,8 @@ int run(char *line, stack_t **stack, unsigned int line_number)
 				op_value = atoi(value);
 			}
 			op_code[i].f(stack, line_number);
+			if (*stack == NULL)
+				return (1);
 			break;
 		}
 		i++;
