@@ -47,21 +47,22 @@ void add_int(stack_t **stack, unsigned int line_number)
 
 void p_stack(stack_t **stack, unsigned int line_number)
 {
+	stack_t *current = *stack;
 	(void)line_number;
 
 	if (*stack == NULL)
 		return;
 
-	while ((*stack)->next != NULL)
+	while (current->next != NULL)
 	{
-		*stack = (*stack)->next;
+		current = current->next;
 	}
-	while ((*stack)->prev != NULL)
+	while (current->prev != NULL)
 	{
-		printf("%d\n", (*stack)->n);
-		*stack = (*stack)->prev;
+		printf("%d\n", current->n);
+		current = current->prev;
 	}
-	printf("%d\n", (*stack)->n);
+	printf("%d\n", current->n);
 }
 
 /**
@@ -109,14 +110,16 @@ void print_error(unsigned int line_number, char *op_c)
 
 void p_int(stack_t **stack, unsigned int line_number)
 {
+	stack_t *current = *stack;
+
 	if (*stack == NULL)
 	{
 		fprintf(stderr, "L%d: can't pint, stack empty\n", line_number);
 		return;
 	}
-	while ((*stack)->next != NULL)
+	while (current->next != NULL)
 	{
-		*stack = (*stack)->next;
+		current = current->next;
 	}
-	printf("%d\n", (*stack)->n);
+	printf("%d\n", current->n);
 }

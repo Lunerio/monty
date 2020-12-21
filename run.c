@@ -21,6 +21,7 @@ int run(char *line, stack_t **stack, unsigned int line_number)
 		{"push", add_int},
 		{"pall", p_stack},
 		{"pint", p_int},
+		{"pop", s_pop},
 		{NULL, NULL}
 	};
 	line_tok = strtok(line, delim);
@@ -39,7 +40,7 @@ int run(char *line, stack_t **stack, unsigned int line_number)
 				op_value = atoi(value);
 			}
 			op_code[i].f(stack, line_number);
-			if (*stack == NULL && (strcmp(line_tok, "pint") == 0))
+			if (checker(stack, line_tok) == 1)
 				return (1);
 			break;
 		}
@@ -61,4 +62,20 @@ int run(char *line, stack_t **stack, unsigned int line_number)
 void p_error(unsigned int line_number)
 {
 	fprintf(stderr, "L%d: usage: push integer\n", line_number);
+}
+
+/**
+ * checker - checks if the stack is empty. works with relative functions
+ * @stack: stack
+ * @line_tok: value of opcode(function)
+ * Return: 1 if any condition is true, 0 if not
+ */
+
+int checker(stack_t **stack, char *line_tok)
+{
+	if (*stack == NULL && (strcmp(line_tok, "pint") == 0))
+		return (1);
+	if (*stack == NULL && (strcmp(line_tok, "s_pop") == 0))
+		return (1);
+	return (0);
 }
