@@ -21,7 +21,6 @@ int run(char *line, stack_t **stack, unsigned int line_number)
 		{"push", add_int},
 		{"pall", p_stack},
 		{"pint", p_int},
-		{"pop", s_pop},
 		{"nop", nope},
 		{NULL, NULL}
 	};
