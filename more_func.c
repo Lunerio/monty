@@ -51,7 +51,7 @@ void nope(stack_t **stack, unsigned int line_number)
  * @line_number: number of line to get analyzed.
  */
 
-void add_func(stack_t **stack, unsigned int line_number)
+void add_func(stack_t **stack, unsigned int l_n)
 {
 	stack_t *prev = NULL;
 	stack_t *current = *stack;
@@ -59,7 +59,7 @@ void add_func(stack_t **stack, unsigned int line_number)
 
 	if (current == NULL)
 	{
-		fprintf(stderr, "L%d: can't add, stack too short", line_number);
+		fprintf(stderr, "L%d: can't add, stack too short\n", l_n);
 		return;
 	}
 	while (current->next != NULL)
@@ -69,7 +69,7 @@ void add_func(stack_t **stack, unsigned int line_number)
 	}
 	if (count < 2)
 	{
-		fprintf(stderr, "L%d: can't add, stack too short", line_number);
+		fprintf(stderr, "L%d: can't add, stack too short\n", l_n);
 		return;
 	}
 	prev = current->prev;
