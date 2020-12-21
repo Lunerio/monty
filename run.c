@@ -13,23 +13,44 @@ int op_value;
 int run(char *line, stack_t **stack, unsigned int line_number)
 {
 	char *line_tok = NULL;
-	char *value = NULL;
-	int i = 0;
-	char delim[] = " \n\t\n\r";
+	int ret;
+	char delim[] = " \n\t\r";
 
 	instruction_t op_code[] = {
 		{"push", add_int},
 		{"pall", p_stack},
 		{"pint", p_int},
+		{"pop", s_pop},
 		{"nop", nope},
 		{NULL, NULL}
 	};
 	line_tok = strtok(line, delim);
-	while (op_code[i].opcode != NULL)
+	ret = loop(op_code, line_tok, stack, line_number);
+	if (ret == 1)
+		return (1);
+	return (0);
+}
+
+/**
+ * loop - loops through op_code to find and execute function
+ * @op_c: array of struc
+ * @l_t: line to check
+ * @line_number: you know already
+ * @s: stack
+ * Return: 1 on failure, 0 on success
+ */
+
+int loop(instruction_t *op_c, char *l_t, stack_t **s, unsigned int line_number)
+{
+	char *value = NULL;
+	int i = 0;
+	char delim[] = " \n\t\r";
+
+	while (op_c[i].opcode != NULL)
 	{
-		if (strcmp(op_code[i].opcode, line_tok) == 0)
+		if (strcmp(op_c[i].opcode, l_t) == 0)
 		{
-			if (strcmp(line_tok, "push") == 0)
+			if (strcmp(l_t, "push") == 0)
 			{
 				value = strtok(NULL, delim);
 				if (value == NULL || isdigit(*value) == 0)
@@ -39,16 +60,16 @@ int run(char *line, stack_t **stack, unsigned int line_number)
 				}
 				op_value = atoi(value);
 			}
-			op_code[i].f(stack, line_number);
-			if (checker(stack, line_tok) == 1)
+			op_c[i].f(s, line_number);
+			if (checker(s, l_t) == 1)
 				return (1);
 			break;
 		}
 		i++;
 	}
-	if (op_code[i].opcode == NULL)
+	if (op_c[i].opcode == NULL)
 	{
-		print_error(line_number, line_tok);
+		print_error(line_number, l_t);
 		return (1);
 	}
 	return (0);
