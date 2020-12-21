@@ -14,18 +14,20 @@ void s_pop(stack_t **stack, unsigned int line_number)
 	if (*stack == NULL)
 	{
 		fprintf(stderr, "L%d: can't pop an empty stack\n", line_number);
+
+		return;
+	}
+	if ((*stack)->next == NULL)
+	{
+		*stack = NULL;
+		free(current);
 		return;
 	}
 
 	while (current->next != NULL)
-	{
-		printf("node int is %d\n", current->n);
 		current = current->next;
-	}
-	printf("node int is %d\n", current->n);
 
 	prev = current->prev;
-	printf("prev int is %d\n", prev->n);
 	prev->next = NULL;
 	free(current);
 }
