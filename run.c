@@ -39,7 +39,7 @@ int run(char *line, stack_t **stack, unsigned int line_number)
 				op_value = atoi(value);
 			}
 			op_code[i].f(stack, line_number);
-			if (*stack == NULL)
+			if (*stack == NULL && (strcmp(line_tok, "pint") == 0))
 				return (1);
 			break;
 		}
