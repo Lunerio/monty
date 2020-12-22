@@ -78,3 +78,37 @@ void add_func(stack_t **stack, unsigned int l_n)
 	prev->next = NULL;
 	free(current);
 }
+
+/**
+ * add_func - add two last values from stack and assigns it to previous to last.
+ * @stack: stack to look for.
+ * @line_number: number of line to get analyzed.
+ */
+
+void swap_s(stack_t **stack, unsigned int l_n)
+{
+	stack_t *prev = NULL;
+	stack_t *current = *stack;
+	int count = 1, val_cur, val_prev;
+
+	if (current == NULL)
+	{
+		fprintf(stderr, "L%d: can't swap, stack too short\n", l_n);
+		return;
+	}
+	while (current->next != NULL)
+	{
+		current = current->next;
+		count++;
+	}
+	if (count < 2)
+	{
+		fprintf(stderr, "L%d: can't swap, stack too short\n", l_n);
+		return;
+	}
+	prev = current->prev;
+	val_cur = current->n;
+	val_prev = prev->n;
+	prev->n = val_cur;
+	current->n = val_prev;
+}
