@@ -14,8 +14,7 @@ void s_pop(stack_t **stack, unsigned int line_number)
 	if (*stack == NULL)
 	{
 		fprintf(stderr, "L%d: can't pop an empty stack\n", line_number);
-
-		return;
+		exit(EXIT_FAILURE);
 	}
 	if ((*stack)->next == NULL)
 	{
@@ -60,7 +59,7 @@ void add_func(stack_t **stack, unsigned int l_n)
 	if (current == NULL)
 	{
 		fprintf(stderr, "L%d: can't add, stack too short\n", l_n);
-		return;
+		exit(EXIT_FAILURE);
 	}
 	while (current->next != NULL)
 	{
@@ -70,7 +69,7 @@ void add_func(stack_t **stack, unsigned int l_n)
 	if (count < 2)
 	{
 		fprintf(stderr, "L%d: can't add, stack too short\n", l_n);
-		return;
+		exit(EXIT_FAILURE);
 	}
 	prev = current->prev;
 	add_value = current->n + prev->n;
@@ -94,7 +93,7 @@ void swap_s(stack_t **stack, unsigned int l_n)
 	if (current == NULL)
 	{
 		fprintf(stderr, "L%d: can't swap, stack too short\n", l_n);
-		return;
+		exit(EXIT_FAILURE);
 	}
 	while (current->next != NULL)
 	{
@@ -104,7 +103,7 @@ void swap_s(stack_t **stack, unsigned int l_n)
 	if (count < 2)
 	{
 		fprintf(stderr, "L%d: can't swap, stack too short\n", l_n);
-		return;
+		exit(EXIT_FAILURE);
 	}
 	prev = current->prev;
 	val_cur = current->n;

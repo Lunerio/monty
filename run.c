@@ -29,7 +29,7 @@ int run(char *line, stack_t **stack, unsigned int line_number)
 	line_tok = strtok(line, delim);
 	ret = loop(op_code, line_tok, stack, line_number);
 	if (ret == 1)
-		return (1);
+		exit(EXIT_FAILURE);
 	return (0);
 }
 
@@ -58,13 +58,13 @@ int loop(instruction_t *op_c, char *l_t, stack_t **s, unsigned int line_number)
 				if (value == NULL || isdigit(*value) == 0)
 				{
 					p_error(line_number);
-					return (1);
+					exit(EXIT_FAILURE);
 				}
 				op_value = atoi(value);
 			}
 			op_c[i].f(s, line_number);
 			if (checker(s, l_t) == 1)
-				return (1);
+				exit(EXIT_FAILURE);
 			break;
 		}
 		i++;
@@ -72,7 +72,7 @@ int loop(instruction_t *op_c, char *l_t, stack_t **s, unsigned int line_number)
 	if (op_c[i].opcode == NULL)
 	{
 		print_error(line_number, l_t);
-		return (1);
+		exit(EXIT_FAILURE);
 	}
 	return (0);
 }
@@ -97,8 +97,8 @@ void p_error(unsigned int line_number)
 int checker(stack_t **stack, char *line_tok)
 {
 	if (*stack == NULL && (strcmp(line_tok, "pint") == 0))
-		return (1);
+		exit(EXIT_FAILURE);
 	if (*stack == NULL && (strcmp(line_tok, "s_pop") == 0))
-		return (1);
+		exit(EXIT_FAILURE);
 	return (0);
 }

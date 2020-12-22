@@ -20,7 +20,7 @@ int read_func(FILE *file_d)
 		{
 			free(line);
 			free_stack(stack);
-			return (1);
+			exit(EXIT_FAILURE);
 		}
 		line_number++;
 	}

@@ -31,7 +31,10 @@ void add_int(stack_t **stack, unsigned int line_number)
 		}
 		new = malloc(sizeof(stack_t));
 		if (new == NULL)
-			return;
+		{
+			fprintf(stderr, "Error: malloc failed\n");
+			exit(EXIT_FAILURE);
+		}
 		new->n = op_value;
 		new->prev = act;
 		new->next = NULL;
@@ -115,7 +118,7 @@ void p_int(stack_t **stack, unsigned int line_number)
 	if (*stack == NULL)
 	{
 		fprintf(stderr, "L%d: can't pint, stack empty\n", line_number);
-		return;
+		exit(EXIT_FAILURE);
 	}
 	while (current->next != NULL)
 	{
