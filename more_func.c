@@ -45,9 +45,9 @@ void nope(stack_t **stack, unsigned int line_number)
 
 
 /**
- * add_func - add two last values from stack and assigns it to previous to last.
+ * add_func - add two last val from stack and assign it to previous.
  * @stack: stack to look for.
- * @line_number: number of line to get analyzed.
+ * @l_n: number of line to get analyzed.
  */
 
 void add_func(stack_t **stack, unsigned int l_n)
@@ -79,9 +79,9 @@ void add_func(stack_t **stack, unsigned int l_n)
 }
 
 /**
- * add_func - add two last values from stack and assigns it to previous to last.
+ * swap_s - swap values from two last elements.
  * @stack: stack to look for.
- * @line_number: number of line to get analyzed.
+ * @l_n: number of line to get analyzed.
  */
 
 void swap_s(stack_t **stack, unsigned int l_n)
