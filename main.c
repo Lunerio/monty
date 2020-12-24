@@ -10,7 +10,7 @@
 int main(int argc, char **argv)
 {
 	FILE *file_d;
-	int len_name, ret;
+	int ret;
 	char *file_name;
 
 	if (argc != 2)
@@ -20,14 +20,6 @@ int main(int argc, char **argv)
 	}
 
 	file_name = argv[1];
-
-	len_name = strlen(file_name);
-
-	if (file_name[len_name - 1] != 'm' && file_name[len_name - 2 != '.'])
-	{
-		fprintf(stderr, "Error: Can't open file %s\n", file_name);
-		exit(EXIT_FAILURE);
-	}
 
 	file_d = fopen(file_name, "r");
 	if (file_d == NULL)
