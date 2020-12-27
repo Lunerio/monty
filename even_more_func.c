@@ -113,3 +113,35 @@ void mod_f(stack_t **stack, unsigned int l_n)
 	prev->next = NULL;
 	free(current);
 }
+
+
+/**
+ * puchar - prints char from the push
+ * @stack: you know
+ * @l_n: you know
+ */
+
+void puchar(stack_t **stack, unsigned int l_n)
+{
+	stack_t *current = *stack;
+	char c;
+
+	if (current == NULL)
+	{
+		fprintf(stderr, "L%d: can't pchar, stack empty\n", l_n);
+		exit(EXIT_FAILURE);
+	}
+
+	while (current->next != NULL)
+		current = current->next;
+
+	if (current->n < 0 || current->n > 127)
+	{
+		fprintf(stderr, "L%d: can't pchar, value out of range\n", l_n);
+		exit(EXIT_FAILURE);
+	}
+
+	c = current->n;
+	write(1,&c, 1);
+	write(1, "\n", 1);
+}

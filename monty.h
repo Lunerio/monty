@@ -57,4 +57,6 @@ void sub_f(stack_t **stack, unsigned int l_n);
 void div_f(stack_t **stack, unsigned int l_n);
 void mul_f(stack_t **stack, unsigned int l_n);
 void mod_f(stack_t **stack, unsigned int l_n);
+void puchar(stack_t **stack, unsigned int l_n);
+
 #endif

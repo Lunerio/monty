@@ -28,6 +28,7 @@ int run(char *line, stack_t **stack, unsigned int line_number)
 		{"div", div_f},
 		{"mul", mul_f},
 		{"mod", mod_f},
+		{"pchar", puchar},
 		{NULL, NULL}
 	};
 	line_tok = strtok(line, delim);
