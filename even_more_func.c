@@ -29,7 +29,7 @@ void div_f(stack_t **stack, unsigned int l_n)
 	}
 	if (current->n == 0)
 	{
-		fprintf(stderr, "L<line_number>: division by zero", l_n);
+		fprintf(stderr, "L%d: division by zero", l_n);
 		exit(EXIT_FAILURE);
 	}
 	prev = current->prev;
