@@ -27,8 +27,13 @@ void div_f(stack_t **stack, unsigned int l_n)
 		fprintf(stderr, "L%d: can't div, stack too short\n", l_n);
 		exit(EXIT_FAILURE);
 	}
+	if (current->n == 0)
+	{
+		fprintf(stderr, "L<line_number>: division by zero", l_n);
+		exit(EXIT_FAILURE);
+	}
 	prev = current->prev;
-	div_value = current->n / prev->n;
+	div_value = prev->n / current->n;
 	prev->n = div_value;
 	prev->next = NULL;
 	free(current);

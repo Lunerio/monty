@@ -141,7 +141,7 @@ void sub_f(stack_t **stack, unsigned int l_n)
 		exit(EXIT_FAILURE);
 	}
 	prev = current->prev;
-	sub_value = current->n - prev->n;
+	sub_value = prev->n - current->n;
 	if (sub_value < 0)
 		sub_value = sub_value * (-1);
 	prev->n = sub_value;
