@@ -111,3 +111,38 @@ void swap_s(stack_t **stack, unsigned int l_n)
 	prev->n = val_cur;
 	current->n = val_prev;
 }
+
+
+/**
+ * sub_f - substracts the value of the last two elements and assigns value
+ * @stack - you know
+ * @l_n: you know
+ */
+
+void sub_f(stack_t **stack, unsigned int l_n)
+{
+	stack_t *prev = NULL;
+	stack_t *current = *stack;
+	int count = 1, sub_value;
+
+	if (current == NULL)
+	{
+		fprintf(stderr, "L%d: can't sub, stack too short\n", l_n);
+		exit(EXIT_FAILURE);
+	}
+	while (current->next != NULL)
+	{
+		current = current->next;
+		count++;
+	}
+	if (count < 2)
+	{
+		fprintf(stderr, "L%d: can't sub, stack too short\n", l_n);
+		exit(EXIT_FAILURE);
+	}
+	prev = current->prev;
+	sub_value = current->n - prev->n;
+	prev->n = sub_value;
+	prev->next = NULL;
+	free(current);
+}
