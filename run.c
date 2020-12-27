@@ -27,9 +27,12 @@ int run(char *line, stack_t **stack, unsigned int line_number)
 		{"sub", sub_f},
 		{"div", div_f},
 		{"mul", mul_f},
+		{"mod", mod_f},
 		{NULL, NULL}
 	};
 	line_tok = strtok(line, delim);
+	if (line_tok[0] == '#')
+		return (0);
 	ret = loop(op_code, line_tok, stack, line_number);
 	if (ret == 1)
 		exit(EXIT_FAILURE);

@@ -56,5 +56,5 @@ void swap_s(stack_t **stack, unsigned int line_number);
 void sub_f(stack_t **stack, unsigned int l_n);
 void div_f(stack_t **stack, unsigned int l_n);
 void mul_f(stack_t **stack, unsigned int l_n);
-
+void mod_f(stack_t **stack, unsigned int l_n);
 #endif
